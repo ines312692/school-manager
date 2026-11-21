@@ -1,0 +1,58 @@
+site_name: School Manager
+site_description: Documentation technique de l'application Django de gestion des écoles.
+docs_dir: docs
+site_dir: site
+use_directory_urls: false
+
+theme:
+  name: material
+  language: fr
+  features:
+    - navigation.sections
+    - navigation.expand
+    - navigation.top
+    - content.code.copy
+    - search.highlight
+  palette:
+    - scheme: default
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-7
+        name: Mode sombre
+    - scheme: slate
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-4
+        name: Mode clair
+
+markdown_extensions:
+  - admonition
+  - attr_list
+  - tables
+  - toc:
+      permalink: true
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.highlight
+  - pymdownx.inlinehilite
+
+nav:
+  - Accueil: index.md
+  - Installation: installation.md
+  - Configuration: configuration.md
+  - Architecture: architecture.md
+  - Fonctionnalités:
+      - Authentification et rôles: fonctionnalites/authentification.md
+      - Gestion des écoles: fonctionnalites/ecoles.md
+      - Upload de fichiers: fonctionnalites/fichiers.md
+      - Référence de l'API: fonctionnalites/api.md
+  - Base de données: base-de-donnees.md
+  - Tests: tests.md
+  - Déploiement:
+      - Docker: deploiement/docker.md
+      - Mise en production: deploiement/production.md
+  - Dépendances: dependances.md

@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block title %}Supprimer {{ school.name }}{% endblock %}
+{% block content %}
+  <section class="card card--narrow">
+    <h1>Supprimer l'école</h1>
+    <p>Confirmez-vous la suppression de <strong>{{ school.name }}</strong> ? Ses documents seront également supprimés. Cette action est irréversible.</p>
+    <form method="post">
+      {% csrf_token %}
+      <div class="button-group">
+        <button type="submit" class="btn btn--danger">Supprimer définitivement</button>
+        <a class="btn" href="{{ school.get_absolute_url }}">Annuler</a>
+      </div>
+    </form>
+  </section>
+{% endblock %}

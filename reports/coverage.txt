@@ -1,0 +1,50 @@
+Name                                           Stmts   Miss Branch BrPart  Cover   Missing
+------------------------------------------------------------------------------------------
+apps/__init__.py                                   0      0      0      0   100%
+apps/accounts/__init__.py                          0      0      0      0   100%
+apps/accounts/admin.py                            14      0      0      0   100%
+apps/accounts/api/__init__.py                      0      0      0      0   100%
+apps/accounts/api/serializers.py                  48      0      6      0   100%
+apps/accounts/api/urls.py                          4      0      0      0   100%
+apps/accounts/api/views.py                        45      0      0      0   100%
+apps/accounts/apps.py                              5      0      0      0   100%
+apps/accounts/forms.py                            27      0      2      0   100%
+apps/accounts/managers.py                          5      0      0      0   100%
+apps/accounts/mixins.py                            4      0      0      0   100%
+apps/accounts/models.py                           27      0      0      0   100%
+apps/accounts/permissions.py                      13      1      2      0    93%   12
+apps/accounts/services.py                         15      1      2      1    88%   10
+apps/accounts/urls.py                              5      0      0      0   100%
+apps/accounts/views.py                            25      0      2      0   100%
+apps/core/__init__.py                              0      0      0      0   100%
+apps/core/apps.py                                  5      0      0      0   100%
+apps/core/database.py                             12      3      0      0    75%   11-13
+apps/core/management/__init__.py                   0      0      0      0   100%
+apps/core/management/commands/__init__.py          0      0      0      0   100%
+apps/core/management/commands/wait_for_db.py      22      2      4      1    88%   29-30
+apps/core/models.py                                7      0      0      0   100%
+apps/core/testing.py                              34      0      0      0   100%
+apps/core/views.py                                16      0      2      0   100%
+apps/schools/__init__.py                           0      0      0      0   100%
+apps/schools/admin.py                             37      0     10      2    96%   28->30, 45->47
+apps/schools/api/__init__.py                       0      0      0      0   100%
+apps/schools/api/serializers.py                   35      0      2      0   100%
+apps/schools/api/urls.py                           7      0      0      0   100%
+apps/schools/api/views.py                         56      0      6      0   100%
+apps/schools/apps.py                               8      0      0      0   100%
+apps/schools/forms.py                             16      0      0      0   100%
+apps/schools/models.py                            63      0      4      1    99%   109->111
+apps/schools/services.py                          19      0      4      0   100%
+apps/schools/signals.py                           17      0      6      2    91%   9->exit, 25->exit
+apps/schools/urls.py                               4      0      0      0   100%
+apps/schools/validators.py                        23      2      2      0    92%   16, 31
+apps/schools/views.py                             90      0      2      0   100%
+config/__init__.py                                 0      0      0      0   100%
+config/api_urls.py                                 4      0      0      0   100%
+config/env.py                                     36      0     12      0   100%
+config/settings/__init__.py                        0      0      0      0   100%
+config/settings/base.py                           41      0      0      0   100%
+config/settings/test.py                            7      0      0      0   100%
+config/urls.py                                     4      0      0      0   100%
+------------------------------------------------------------------------------------------
+TOTAL                                            800      9     68      7    98%

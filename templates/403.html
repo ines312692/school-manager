@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block title %}Accès refusé{% endblock %}
+{% block content %}
+  <section class="card card--narrow">
+    <h1>Accès refusé</h1>
+    <p>Cette action est réservée aux administrateurs.</p>
+    <a class="btn" href="{% url 'schools:list' %}">Retour à la liste des écoles</a>
+  </section>
+{% endblock %}

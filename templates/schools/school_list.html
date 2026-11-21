@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+{% block title %}Écoles{% endblock %}
+{% block content %}
+  <div class="page-header">
+    <h1>Écoles <span class="muted">({{ paginator.count }})</span></h1>
+    {% if user.is_admin %}<a class="btn btn--primary" href="{% url 'schools:create' %}">Ajouter une école</a>{% endif %}
+  </div>
+
+  <form method="get" class="search">
+    <input type="search" name="q" value="{{ query }}" placeholder="Rechercher par nom, ville ou code postal" aria-label="Rechercher">
+    <button type="submit" class="btn">Rechercher</button>
+  </form>
+
+  {% if schools %}
+    <div class="table-wrapper">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Nom</th>
+            <th>Ville</th>
+            <th>Code postal</th>
+            <th class="num">Élèves</th>
+            <th class="num">Documents</th>
+            {% if user.is_admin %}<th class="actions">Actions</th>{% endif %}
+          </tr>
+        </thead>
+        <tbody>
+          {% for school in schools %}
+            <tr>
+              <td><a href="{{ school.get_absolute_url }}">{{ school.name }}</a></td>
+              <td>{{ school.city }}</td>
+              <td>{{ school.postal_code }}</td>
+              <td class="num">{{ school.student_count }}</td>
+              <td class="num">{{ school.document_count }}</td>
+              {% if user.is_admin %}
+                <td class="actions">
+                  <a href="{% url 'schools:update' school.pk %}">Modifier</a>
+                  <a class="danger" href="{% url 'schools:delete' school.pk %}">Supprimer</a>
+                </td>
+              {% endif %}
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+
+    {% if is_paginated %}
+      <nav class="pagination">
+        {% if page_obj.has_previous %}<a class="btn" href="?page={{ page_obj.previous_page_number }}{% if query %}&amp;q={{ query|urlencode }}{% endif %}">Précédent</a>{% endif %}
+        <span>Page {{ page_obj.number }} / {{ paginator.num_pages }}</span>
+        {% if page_obj.has_next %}<a class="btn" href="?page={{ page_obj.next_page_number }}{% if query %}&amp;q={{ query|urlencode }}{% endif %}">Suivant</a>{% endif %}
+      </nav>
+    {% endif %}
+  {% else %}
+    <div class="empty">Aucune école {% if query %}ne correspond à « {{ query }} »{% else %}n'est enregistrée pour le moment{% endif %}.</div>
+  {% endif %}
+{% endblock %}

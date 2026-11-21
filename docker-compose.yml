@@ -1,0 +1,55 @@
+name: school-manager
+
+services:
+  db:
+    image: postgres:16-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB:-school_manager}
+      POSTGRES_USER: ${POSTGRES_USER:-school_manager}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?POSTGRES_PASSWORD doit être défini dans .env}
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $${POSTGRES_USER} -d $${POSTGRES_DB}"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+    networks:
+      - backend
+
+  web:
+    build:
+      context: .
+    image: school-manager:latest
+    restart: unless-stopped
+    env_file:
+      - .env
+    environment:
+      POSTGRES_HOST: db
+      POSTGRES_PORT: "5432"
+    depends_on:
+      db:
+        condition: service_healthy
+    ports:
+      - "${WEB_PORT:-8000}:8000"
+    volumes:
+      - media_data:/app/media
+    networks:
+      - backend
+
+  docs:
+    image: squidfunk/mkdocs-material:9.7
+    profiles: ["docs"]
+    command: ["serve", "--dev-addr=0.0.0.0:8001"]
+    ports:
+      - "${DOCS_PORT:-8001}:8001"
+    volumes:
+      - ./:/docs:ro
+
+volumes:
+  postgres_data:
+  media_data:
+
+networks:
+  backend:

@@ -1,0 +1,41 @@
+{% load static %}<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}School Manager{% endblock %} · School Manager</title>
+  <link rel="stylesheet" href="{% static 'css/app.css' %}">
+</head>
+<body>
+  <header class="topbar">
+    <div class="container topbar__inner">
+      <a class="brand" href="{% url 'home' %}">School Manager</a>
+      <nav class="nav">
+        {% if user.is_authenticated %}
+          <a href="{% url 'schools:list' %}">Écoles</a>
+          {% if user.is_admin %}<a href="{% url 'schools:create' %}">Nouvelle école</a>{% endif %}
+          <span class="nav__user">{{ user.get_username }} · <span class="badge badge--{{ user.role }}">{{ user.get_role_display }}</span></span>
+          <form method="post" action="{% url 'accounts:logout' %}" class="inline">
+            {% csrf_token %}
+            <button type="submit" class="btn btn--ghost">Déconnexion</button>
+          </form>
+        {% else %}
+          <a href="{% url 'accounts:login' %}">Connexion</a>
+          <a href="{% url 'accounts:signup' %}" class="btn btn--primary">Inscription</a>
+        {% endif %}
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    {% if messages %}
+      <ul class="messages">
+        {% for message in messages %}
+          <li class="message message--{{ message.tags }}">{{ message }}</li>
+        {% endfor %}
+      </ul>
+    {% endif %}
+    {% block content %}{% endblock %}
+  </main>
+</body>
+</html>

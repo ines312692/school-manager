@@ -1,0 +1,150 @@
+Exécution : 2026-11-19 14:59 UTC — Python 3.13.18 — Django 5.2.19 — PostgreSQL 16.15 (Ubuntu 16.15-0ubuntu0.24.04.1)
+Commande : coverage run manage.py test --settings=config.settings.test -v 2
+
+Found 107 test(s).
+Creating test database for alias 'default' ('test_school_manager')...
+Operations to perform:
+  Synchronize unmigrated apps: core, drf_spectacular, messages, rest_framework, staticfiles
+  Apply all migrations: accounts, admin, auth, authtoken, contenttypes, schools, sessions
+Synchronizing apps without migrations:
+  Creating tables...
+    Running deferred SQL...
+Running migrations:
+  Applying contenttypes.0001_initial... OK
+  Applying contenttypes.0002_remove_content_type_name... OK
+  Applying auth.0001_initial... OK
+  Applying auth.0002_alter_permission_name_max_length... OK
+  Applying auth.0003_alter_user_email_max_length... OK
+  Applying auth.0004_alter_user_username_opts... OK
+  Applying auth.0005_alter_user_last_login_null... OK
+  Applying auth.0006_require_contenttypes_0002... OK
+  Applying auth.0007_alter_validators_add_error_messages... OK
+  Applying auth.0008_alter_user_username_max_length... OK
+  Applying auth.0009_alter_user_last_name_max_length... OK
+  Applying auth.0010_alter_group_name_max_length... OK
+  Applying auth.0011_update_proxy_permissions... OK
+  Applying auth.0012_alter_user_first_name_max_length... OK
+  Applying accounts.0001_initial... OK
+  Applying admin.0001_initial... OK
+  Applying admin.0002_logentry_remove_auto_add... OK
+  Applying admin.0003_logentry_add_action_flag_choices... OK
+  Applying authtoken.0001_initial... OK
+  Applying authtoken.0002_auto_20160226_1747... OK
+  Applying authtoken.0003_tokenproxy... OK
+  Applying authtoken.0004_alter_tokenproxy_options... OK
+  Applying schools.0001_initial... OK
+  Applying sessions.0001_initial... OK
+System check identified no issues (0 silenced).
+test_login_of_inactive_user_is_rejected (apps.accounts.tests.test_api.LoginApiTests.test_login_of_inactive_user_is_rejected) ... ok
+test_login_updates_last_login (apps.accounts.tests.test_api.LoginApiTests.test_login_updates_last_login) ... ok
+test_login_with_valid_credentials_returns_token (apps.accounts.tests.test_api.LoginApiTests.test_login_with_valid_credentials_returns_token) ... ok
+test_login_with_wrong_password_is_rejected (apps.accounts.tests.test_api.LoginApiTests.test_login_with_wrong_password_is_rejected) ... ok
+test_invalid_token_is_rejected (apps.accounts.tests.test_api.LogoutAndMeApiTests.test_invalid_token_is_rejected) ... ok
+test_logout_requires_authentication (apps.accounts.tests.test_api.LogoutAndMeApiTests.test_logout_requires_authentication) ... ok
+test_logout_revokes_the_token (apps.accounts.tests.test_api.LogoutAndMeApiTests.test_logout_revokes_the_token) ... ok
+test_me_returns_the_authenticated_user (apps.accounts.tests.test_api.LogoutAndMeApiTests.test_me_returns_the_authenticated_user) ... ok
+test_registration_cannot_self_assign_admin_role (apps.accounts.tests.test_api.RegisterApiTests.test_registration_cannot_self_assign_admin_role) ... ok
+test_registration_creates_user_and_returns_token (apps.accounts.tests.test_api.RegisterApiTests.test_registration_creates_user_and_returns_token) ... ok
+test_registration_hashes_the_password (apps.accounts.tests.test_api.RegisterApiTests.test_registration_hashes_the_password) ... ok
+test_registration_rejects_duplicate_email_case_insensitively (apps.accounts.tests.test_api.RegisterApiTests.test_registration_rejects_duplicate_email_case_insensitively) ... ok
+test_registration_rejects_mismatched_passwords (apps.accounts.tests.test_api.RegisterApiTests.test_registration_rejects_mismatched_passwords) ... ok
+test_registration_rejects_weak_password (apps.accounts.tests.test_api.RegisterApiTests.test_registration_rejects_weak_password) ... ok
+test_admin_role_grants_admin_rights (apps.accounts.tests.test_models.UserModelTests.test_admin_role_grants_admin_rights) ... ok
+test_email_is_normalized_to_lowercase (apps.accounts.tests.test_models.UserModelTests.test_email_is_normalized_to_lowercase) ... ok
+test_email_uniqueness_is_case_insensitive (apps.accounts.tests.test_models.UserModelTests.test_email_uniqueness_is_case_insensitive) ... ok
+test_inactive_admin_has_no_admin_rights (apps.accounts.tests.test_models.UserModelTests.test_inactive_admin_has_no_admin_rights) ... ok
+test_new_user_has_regular_role_by_default (apps.accounts.tests.test_models.UserModelTests.test_new_user_has_regular_role_by_default) ... ok
+test_password_is_hashed_with_argon2 (apps.accounts.tests.test_models.UserModelTests.test_password_is_hashed_with_argon2) ... ok
+test_password_is_never_stored_in_clear_text (apps.accounts.tests.test_models.UserModelTests.test_password_is_never_stored_in_clear_text) ... ok
+test_superuser_is_created_with_admin_role (apps.accounts.tests.test_models.UserModelTests.test_superuser_is_created_with_admin_role) ... ok
+test_login_with_invalid_credentials (apps.accounts.tests.test_views.LoginLogoutViewTests.test_login_with_invalid_credentials) ... ok
+test_login_with_valid_credentials (apps.accounts.tests.test_views.LoginLogoutViewTests.test_login_with_valid_credentials) ... ok
+test_logout_ends_the_session (apps.accounts.tests.test_views.LoginLogoutViewTests.test_logout_ends_the_session) ... ok
+test_authenticated_user_is_redirected_away_from_signup (apps.accounts.tests.test_views.SignUpViewTests.test_authenticated_user_is_redirected_away_from_signup) ... ok
+test_signup_creates_regular_user_and_logs_in (apps.accounts.tests.test_views.SignUpViewTests.test_signup_creates_regular_user_and_logs_in) ... ok
+test_signup_page_is_rendered (apps.accounts.tests.test_views.SignUpViewTests.test_signup_page_is_rendered) ... ok
+test_signup_rejects_duplicate_email (apps.accounts.tests.test_views.SignUpViewTests.test_signup_rejects_duplicate_email) ... ok
+test_schema_is_generated_and_lists_main_endpoints (apps.core.tests.test_api_schema.OpenApiSchemaTests.test_schema_is_generated_and_lists_main_endpoints) ... ok
+test_all_migrations_are_applied (apps.core.tests.test_health.DatabaseConnectionTests.test_all_migrations_are_applied) ... ok
+test_database_backend_is_postgresql (apps.core.tests.test_health.DatabaseConnectionTests.test_database_backend_is_postgresql) ... ok
+test_models_have_no_pending_migrations (apps.core.tests.test_health.DatabaseConnectionTests.test_models_have_no_pending_migrations) ... ok
+test_wait_for_db_fails_after_timeout (apps.core.tests.test_health.DatabaseConnectionTests.test_wait_for_db_fails_after_timeout) ... ok
+test_wait_for_db_succeeds_when_database_is_reachable (apps.core.tests.test_health.DatabaseConnectionTests.test_wait_for_db_succeeds_when_database_is_reachable) ... ok
+test_reports_ok_when_database_is_reachable (apps.core.tests.test_health.HealthCheckTests.test_reports_ok_when_database_is_reachable) ... ok
+test_reports_service_unavailable_when_database_is_down (apps.core.tests.test_health.HealthCheckTests.test_reports_service_unavailable_when_database_is_down) ... ok
+test_admin_changelists_are_reachable (apps.schools.tests.test_admin.SchoolAdminTests.test_admin_changelists_are_reachable) ... ok
+test_document_uploaded_from_document_admin_records_uploader (apps.schools.tests.test_admin.SchoolAdminTests.test_document_uploaded_from_document_admin_records_uploader) ... ok
+test_inline_document_can_be_deleted_from_admin (apps.schools.tests.test_admin.SchoolAdminTests.test_inline_document_can_be_deleted_from_admin) ... ok
+test_school_created_in_admin_records_creator_and_inline_document (apps.schools.tests.test_admin.SchoolAdminTests.test_school_created_in_admin_records_creator_and_inline_document) ... ok
+test_admin_can_create_school (apps.schools.tests.test_api.SchoolCreateApiTests.test_admin_can_create_school) ... ok
+test_create_rejects_duplicate_name_in_same_city (apps.schools.tests.test_api.SchoolCreateApiTests.test_create_rejects_duplicate_name_in_same_city) ... ok
+test_create_rejects_invalid_fields (apps.schools.tests.test_api.SchoolCreateApiTests.test_create_rejects_invalid_fields) ... ok
+test_create_requires_mandatory_fields (apps.schools.tests.test_api.SchoolCreateApiTests.test_create_requires_mandatory_fields) ... ok
+test_regular_user_cannot_create_school (apps.schools.tests.test_api.SchoolCreateApiTests.test_regular_user_cannot_create_school) ... ok
+test_admin_can_delete_school (apps.schools.tests.test_api.SchoolDeleteApiTests.test_admin_can_delete_school) ... ok
+test_regular_user_cannot_delete_school (apps.schools.tests.test_api.SchoolDeleteApiTests.test_regular_user_cannot_delete_school) ... ok
+test_anonymous_user_cannot_list_schools (apps.schools.tests.test_api.SchoolReadApiTests.test_anonymous_user_cannot_list_schools) ... ok
+test_authenticated_user_can_list_schools (apps.schools.tests.test_api.SchoolReadApiTests.test_authenticated_user_can_list_schools) ... ok
+test_authenticated_user_can_retrieve_school (apps.schools.tests.test_api.SchoolReadApiTests.test_authenticated_user_can_retrieve_school) ... ok
+test_list_supports_search_and_ordering (apps.schools.tests.test_api.SchoolReadApiTests.test_list_supports_search_and_ordering) ... ok
+test_missing_school_returns_404 (apps.schools.tests.test_api.SchoolReadApiTests.test_missing_school_returns_404) ... ok
+test_admin_can_fully_update_school (apps.schools.tests.test_api.SchoolUpdateApiTests.test_admin_can_fully_update_school) ... ok
+test_admin_can_partially_update_school (apps.schools.tests.test_api.SchoolUpdateApiTests.test_admin_can_partially_update_school) ... ok
+test_partial_update_keeping_same_name_is_allowed (apps.schools.tests.test_api.SchoolUpdateApiTests.test_partial_update_keeping_same_name_is_allowed) ... ok
+test_regular_user_cannot_update_school (apps.schools.tests.test_api.SchoolUpdateApiTests.test_regular_user_cannot_update_school) ... ok
+test_update_rejects_name_of_another_school (apps.schools.tests.test_api.SchoolUpdateApiTests.test_update_rejects_name_of_another_school) ... ok
+test_admin_can_delete_document (apps.schools.tests.test_documents.SchoolDocumentApiTests.test_admin_can_delete_document) ... ok
+test_admin_can_upload_document (apps.schools.tests.test_documents.SchoolDocumentApiTests.test_admin_can_upload_document) ... ok
+test_anonymous_user_cannot_download_document (apps.schools.tests.test_documents.SchoolDocumentApiTests.test_anonymous_user_cannot_download_document) ... ok
+test_download_of_missing_file_returns_404 (apps.schools.tests.test_documents.SchoolDocumentApiTests.test_download_of_missing_file_returns_404) ... ok
+test_invalid_school_filter_returns_empty_list (apps.schools.tests.test_documents.SchoolDocumentApiTests.test_invalid_school_filter_returns_empty_list) ... ok
+test_regular_user_cannot_delete_document (apps.schools.tests.test_documents.SchoolDocumentApiTests.test_regular_user_cannot_delete_document) ... ok
+test_regular_user_cannot_upload_document (apps.schools.tests.test_documents.SchoolDocumentApiTests.test_regular_user_cannot_upload_document) ... ok
+test_upload_rejects_file_exceeding_max_size (apps.schools.tests.test_documents.SchoolDocumentApiTests.test_upload_rejects_file_exceeding_max_size) ... ok
+test_upload_rejects_forbidden_extension (apps.schools.tests.test_documents.SchoolDocumentApiTests.test_upload_rejects_forbidden_extension) ... ok
+test_upload_requires_a_file (apps.schools.tests.test_documents.SchoolDocumentApiTests.test_upload_requires_a_file) ... ok
+test_user_can_download_document_as_attachment (apps.schools.tests.test_documents.SchoolDocumentApiTests.test_user_can_download_document_as_attachment) ... ok
+test_user_can_list_documents_of_a_school (apps.schools.tests.test_documents.SchoolDocumentApiTests.test_user_can_list_documents_of_a_school) ... ok
+test_file_is_removed_from_storage_when_document_is_deleted (apps.schools.tests.test_documents.SchoolDocumentModelTests.test_file_is_removed_from_storage_when_document_is_deleted) ... ok
+test_file_is_stored_under_an_unguessable_name (apps.schools.tests.test_documents.SchoolDocumentModelTests.test_file_is_stored_under_an_unguessable_name) ... ok
+test_files_are_removed_when_school_is_deleted (apps.schools.tests.test_documents.SchoolDocumentModelTests.test_files_are_removed_when_school_is_deleted) ... ok
+test_metadata_is_captured_on_upload (apps.schools.tests.test_documents.SchoolDocumentModelTests.test_metadata_is_captured_on_upload) ... ok
+test_previous_file_is_removed_when_file_is_replaced (apps.schools.tests.test_documents.SchoolDocumentModelTests.test_previous_file_is_removed_when_file_is_replaced) ... ok
+test_admin_can_delete_document_from_page (apps.schools.tests.test_documents.SchoolDocumentPageTests.test_admin_can_delete_document_from_page) ... ok
+test_admin_can_upload_document_from_page (apps.schools.tests.test_documents.SchoolDocumentPageTests.test_admin_can_upload_document_from_page) ... ok
+test_admin_sees_upload_form_on_detail_page (apps.schools.tests.test_documents.SchoolDocumentPageTests.test_admin_sees_upload_form_on_detail_page) ... ok
+test_invalid_upload_is_redisplayed (apps.schools.tests.test_documents.SchoolDocumentPageTests.test_invalid_upload_is_redisplayed) ... ok
+test_regular_user_cannot_upload_from_page (apps.schools.tests.test_documents.SchoolDocumentPageTests.test_regular_user_cannot_upload_from_page) ... ok
+test_upload_to_unknown_school_returns_404 (apps.schools.tests.test_documents.SchoolDocumentPageTests.test_upload_to_unknown_school_returns_404) ... ok
+test_user_can_download_document_from_page (apps.schools.tests.test_documents.SchoolDocumentPageTests.test_user_can_download_document_from_page) ... ok
+test_absolute_url_points_to_detail_page (apps.schools.tests.test_models.SchoolModelTests.test_absolute_url_points_to_detail_page) ... ok
+test_full_clean_rejects_invalid_values (apps.schools.tests.test_models.SchoolModelTests.test_full_clean_rejects_invalid_values) ... ok
+test_full_clean_reports_duplicate_school (apps.schools.tests.test_models.SchoolModelTests.test_full_clean_reports_duplicate_school) ... ok
+test_name_and_city_are_unique_case_insensitively_in_database (apps.schools.tests.test_models.SchoolModelTests.test_name_and_city_are_unique_case_insensitively_in_database) ... ok
+test_same_name_is_allowed_in_another_city (apps.schools.tests.test_models.SchoolModelTests.test_same_name_is_allowed_in_another_city) ... ok
+test_string_representation (apps.schools.tests.test_models.SchoolModelTests.test_string_representation) ... ok
+test_admin_can_create_school (apps.schools.tests.test_views.SchoolCreatePageTests.test_admin_can_create_school) ... ok
+test_duplicate_school_is_rejected (apps.schools.tests.test_views.SchoolCreatePageTests.test_duplicate_school_is_rejected) ... ok
+test_invalid_form_is_redisplayed_with_errors (apps.schools.tests.test_views.SchoolCreatePageTests.test_invalid_form_is_redisplayed_with_errors) ... ok
+test_regular_user_is_forbidden (apps.schools.tests.test_views.SchoolCreatePageTests.test_regular_user_is_forbidden) ... ok
+test_admin_sees_management_actions (apps.schools.tests.test_views.SchoolListPageTests.test_admin_sees_management_actions) ... ok
+test_anonymous_user_is_redirected_to_login (apps.schools.tests.test_views.SchoolListPageTests.test_anonymous_user_is_redirected_to_login) ... ok
+test_authenticated_user_sees_available_schools (apps.schools.tests.test_views.SchoolListPageTests.test_authenticated_user_sees_available_schools) ... ok
+test_detail_page_is_accessible (apps.schools.tests.test_views.SchoolListPageTests.test_detail_page_is_accessible) ... ok
+test_list_can_be_filtered (apps.schools.tests.test_views.SchoolListPageTests.test_list_can_be_filtered) ... ok
+test_admin_can_delete_school (apps.schools.tests.test_views.SchoolUpdateDeletePageTests.test_admin_can_delete_school) ... ok
+test_admin_can_update_school (apps.schools.tests.test_views.SchoolUpdateDeletePageTests.test_admin_can_update_school) ... ok
+test_regular_user_cannot_delete_school (apps.schools.tests.test_views.SchoolUpdateDeletePageTests.test_regular_user_cannot_delete_school) ... ok
+test_regular_user_cannot_update_school (apps.schools.tests.test_views.SchoolUpdateDeletePageTests.test_regular_user_cannot_update_school) ... ok
+test_env_bool_parses_common_values (apps.core.tests.test_env.EnvironmentHelpersTests.test_env_bool_parses_common_values) ... ok
+test_env_bool_rejects_invalid_values (apps.core.tests.test_env.EnvironmentHelpersTests.test_env_bool_rejects_invalid_values) ... ok
+test_env_int_parses_and_validates (apps.core.tests.test_env.EnvironmentHelpersTests.test_env_int_parses_and_validates) ... ok
+test_env_list_splits_and_strips (apps.core.tests.test_env.EnvironmentHelpersTests.test_env_list_splits_and_strips) ... ok
+test_env_raises_when_required_value_is_missing_or_blank (apps.core.tests.test_env.EnvironmentHelpersTests.test_env_raises_when_required_value_is_missing_or_blank) ... ok
+test_env_returns_value_or_default (apps.core.tests.test_env.EnvironmentHelpersTests.test_env_returns_value_or_default) ... ok
+
+----------------------------------------------------------------------
+Ran 107 tests in 1.463s
+
+OK
+Destroying test database for alias 'default' ('test_school_manager')...

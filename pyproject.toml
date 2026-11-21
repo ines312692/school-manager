@@ -1,0 +1,36 @@
+[project]
+name = "school-manager"
+version = "1.0.0"
+description = "Application Django de gestion des écoles : authentification, rôles, CRUD et documents."
+requires-python = ">=3.12"
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+extend-exclude = ["*/migrations/*", "site", "staticfiles", "media"]
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "B", "UP", "DJ", "SIM", "RUF", "S"]
+ignore = ["RUF012", "S101"]
+
+[tool.ruff.lint.per-file-ignores]
+"config/settings/*.py" = ["F403", "F405"]
+"**/tests/*.py" = ["S105", "S106"]
+"apps/core/testing.py" = ["S105"]
+"docker/gunicorn.conf.py" = ["S108"]
+
+[tool.ruff.lint.isort]
+known-first-party = ["apps", "config"]
+
+[tool.ruff.format]
+quote-style = "double"
+
+[tool.coverage.run]
+source = ["apps", "config"]
+branch = true
+omit = ["*/migrations/*", "*/tests/*", "config/asgi.py", "config/wsgi.py", "config/settings/production.py", "config/settings/development.py"]
+
+[tool.coverage.report]
+show_missing = true
+skip_covered = false
+fail_under = 90

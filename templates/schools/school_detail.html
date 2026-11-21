@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+{% block title %}{{ school.name }}{% endblock %}
+{% block content %}
+  <div class="page-header">
+    <div>
+      <a class="muted" href="{% url 'schools:list' %}">← Toutes les écoles</a>
+      <h1>{{ school.name }}</h1>
+    </div>
+    {% if user.is_admin %}
+      <div class="button-group">
+        <a class="btn" href="{% url 'schools:update' school.pk %}">Modifier</a>
+        <a class="btn btn--danger" href="{% url 'schools:delete' school.pk %}">Supprimer</a>
+      </div>
+    {% endif %}
+  </div>
+
+  <section class="card">
+    <dl class="details">
+      <dt>Adresse</dt><dd>{{ school.address }}, {{ school.postal_code }} {{ school.city }}</dd>
+      <dt>Nombre d'élèves</dt><dd>{{ school.student_count }}</dd>
+      <dt>E-mail</dt><dd>{% if school.email %}<a href="mailto:{{ school.email }}">{{ school.email }}</a>{% else %}—{% endif %}</dd>
+      <dt>Téléphone</dt><dd>{{ school.phone|default:"—" }}</dd>
+      <dt>Site web</dt><dd>{% if school.website %}<a href="{{ school.website }}" rel="noopener noreferrer" target="_blank">{{ school.website }}</a>{% else %}—{% endif %}</dd>
+      <dt>Créée par</dt><dd>{{ school.created_by.get_username|default:"—" }} le {{ school.created_at|date:"d/m/Y H:i" }}</dd>
+      <dt>Dernière mise à jour</dt><dd>{{ school.updated_at|date:"d/m/Y H:i" }}</dd>
+    </dl>
+  </section>
+
+  <section class="card">
+    <h2>Documents</h2>
+    {% if documents %}
+      <ul class="documents">
+        {% for document in documents %}
+          <li class="document">
+            <div>
+              <a href="{% url 'schools:document-download' document.pk %}">{{ document }}</a>
+              <small class="muted">{{ document.original_name }} · {{ document.size|filesizeformat }} · {{ document.uploaded_at|date:"d/m/Y H:i" }}</small>
+            </div>
+            {% if user.is_admin %}<a class="danger" href="{% url 'schools:document-delete' document.pk %}">Supprimer</a>{% endif %}
+          </li>
+        {% endfor %}
+      </ul>
+    {% else %}
+      <p class="muted">Aucun document pour cette école.</p>
+    {% endif %}
+
+    {% if document_form %}
+      <h3>Ajouter un document</h3>
+      <form method="post" enctype="multipart/form-data" action="{% url 'schools:document-upload' school.pk %}">
+        {% csrf_token %}
+        {% include "includes/form.html" with form=document_form %}
+        <button type="submit" class="btn btn--primary">Téléverser</button>
+      </form>
+    {% endif %}
+  </section>
+{% endblock %}
